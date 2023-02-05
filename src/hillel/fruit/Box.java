@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Box <T>{
+public class Box <T extends Fruit>{
     public static final float WEIGHT_APPLE = 1.0F;
     public static final float WEIGHT_ORANGE = 1.5F;
     private T one;
@@ -27,7 +27,7 @@ public class Box <T>{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Box<?> box = (Box<?>) o;
+        Box<? extends Fruit> box = (Box<?extends Fruit>) o;
         return Objects.equals(one, box.one);
     }
 
@@ -36,12 +36,6 @@ public class Box <T>{
         return Objects.hash(one);
     }
 
-  /*  @Override
-    public String toString() {
-        return "Box{" +
-                "one=" + one +
-                '}';
-    }*/
 
     public void addOne (T one){
         if (one instanceof Apple) {
@@ -76,7 +70,7 @@ public class Box <T>{
 
     public boolean compare (T box){
         Box boxCompare = new Box();
-        if (boxCompare == box)
+        if (boxCompare.equals(box))
             return true;
         else return false;
     }

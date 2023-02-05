@@ -48,7 +48,7 @@ public class Main {
 
         System.out.println();
 
-        System.out.println(box2.compare(box3));
+        System.out.println(box2.compare(box3.getOne()));
 
         System.out.println();
 
